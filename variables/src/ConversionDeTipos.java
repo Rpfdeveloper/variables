@@ -1,6 +1,7 @@
 import com.sun.jdi.PathSearchingVirtualMachine;
 
 import javax.lang.model.SourceVersion;
+import javax.swing.*;
 
 public class ConversionDeTipos {
     public static void main(String[] args) {
