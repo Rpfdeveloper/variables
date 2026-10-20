@@ -1,0 +1,12 @@
+# Generated Java output
+*.class
+**/out/
+/build/
+
+# Local IntelliJ configuration
+**/.idea/
+*.iml
+
+# Operating system files
+.DS_Store
+Thumbs.db
