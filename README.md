@@ -71,9 +71,17 @@ Introduce un entero como `42`: el programa muestra sus representaciones binaria,
 - `untitled`: configuración histórica de IntelliJ, sin código Java.
 - Las carpetas `out` contienen binarios históricos. Los comandos anteriores recompilan los fuentes en `build/classes`.
 
-**Revisión del 20 de octubre de 2026:** se han inspeccionado los diez archivos fuente. No se ha podido ejecutar la compilación en el entorno de esta revisión porque no dispone de un compilador Java utilizable; los resultados descritos son los esperados al leer el código, no una certificación de ejecución.
+**Validación del 20 de octubre de 2026:** los diez archivos fuente compilan con Java 17 y pasan cinco pruebas de regresión, tanto en el entorno de revisión como en GitHub Actions. Se comprueban comparación de strings, conversiones y límites de enteros, recuperación ante entradas inválidas, 2.000 reintentos consecutivos y fin de entrada.
 
-Se conservan los ejercicios originales. Hay aspectos pendientes de mejora: algunas etiquetas de tipos son imprecisas y `SistemasNumericos` reintenta mediante recursión cuando recibe una entrada inválida, en lugar de un bucle. No hay una suite automatizada de pruebas.
+Para ejecutar las pruebas, instala Python 3 además del JDK:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+En Windows también puedes usar `py -3 -m unittest discover -s tests -v`. La suite compila los fuentes reales en una carpeta temporal. El workflow [Java examples](https://github.com/Rpfdeveloper/variables/actions) ejecuta estas comprobaciones en cada push y pull request.
+
+`SistemasNumericos` valida una línea completa por intento, repite mediante un bucle y termina con un mensaje si se agota la entrada. Esta corrección evita las llamadas recursivas del ejercicio inicial. Algunas etiquetas de los ejemplos de tipos siguen siendo imprecisas; las pruebas no certifican todos sus mensajes.
 
 ## Autoría y contexto
 
