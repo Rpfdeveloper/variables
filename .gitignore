@@ -7,6 +7,10 @@
 **/.idea/
 *.iml
 
+# Python test caches
+__pycache__/
+*.py[cod]
+
 # Operating system files
 .DS_Store
 Thumbs.db
