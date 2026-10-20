@@ -1,18 +1,21 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SistemasNumericos {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese un numero entero:");
-        //String numeroStr = scanner.nextLine();
-        int numeroDecimal = 0;
-        try{
-           numeroDecimal = scanner.nextInt();
-        }catch(InputMismatchException e){
-            System.out.println("Error debe ingresar un numero entero");
-            main(args);
-            System.exit(0);
+        int numeroDecimal;
+        while (true) {
+            System.out.println("Ingrese un numero entero:");
+            if (!scanner.hasNextLine()) {
+                System.err.println("No se ha recibido un numero entero.");
+                return;
+            }
+            try {
+                numeroDecimal = Integer.parseInt(scanner.nextLine().trim());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Error debe ingresar un numero entero");
+            }
         }
         System.out.println("numeroDecimal = " + numeroDecimal);
 
